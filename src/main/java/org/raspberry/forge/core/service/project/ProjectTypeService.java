@@ -1,0 +1,62 @@
+package org.raspberry.forge.core.service.project;
+
+import org.raspberry.forge.core.dto.project.ProjectTypeDto;
+import org.raspberry.forge.core.entity.project.ProjectType;
+import org.raspberry.forge.core.exception.NotFoundException;
+import org.raspberry.forge.core.mapper.project.ProjectTypeMapper;
+import org.raspberry.forge.core.repository.project.ProjectTypeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ProjectTypeService {
+
+    @Autowired
+    private ProjectTypeRepository projectTypeRepository;
+
+    @Autowired
+    private ProjectTypeMapper mapper;
+
+    public ProjectTypeDto findById(Long id) {
+        ProjectType projectType = projectTypeRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("ProjectType with id '%s' not found", id));
+
+        return mapper.toDto(projectType);
+    }
+
+    public List<ProjectTypeDto> findAll() {
+        List<ProjectType> projectTypeList = projectTypeRepository.findAll();
+
+        return mapper.toDto(projectTypeList);
+    }
+
+    public ProjectTypeDto create(ProjectTypeDto projectTypeDto) {
+        ProjectType projectType = new ProjectType();
+        projectType.setName(projectTypeDto.getName());
+
+        projectType = projectTypeRepository.save(projectType);
+
+        return mapper.toDto(projectType);
+    }
+
+    public ProjectTypeDto update(Long id, ProjectTypeDto projectTypeDto) {
+        ProjectType projectType = projectTypeRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("ProjectType with id '%s' not found", id));
+
+        projectType.setName(projectTypeDto.getName());
+
+        projectType = projectTypeRepository.save(projectType);
+
+        return mapper.toDto(projectType);
+    }
+
+    public void delete(Long id) {
+        ProjectType projectType = projectTypeRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("ProjectType with id '%s' not found", id));
+
+        projectTypeRepository.delete(projectType);
+    }
+
+}
