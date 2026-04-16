@@ -17,12 +17,12 @@ import java.util.List;
 @AllArgsConstructor
 public class PipelineStepService {
 
-    private PipelineRepository pipelineRepository;
-    private PipelineStepRepository pipelineStepRepository;
-    private PipelineStepTypeRepository pipelineStepTypeRepository;
-    private RuntimeVersionRepository runtimeVersionRepository;
+    private final PipelineRepository pipelineRepository;
+    private final PipelineStepRepository pipelineStepRepository;
+    private final PipelineStepTypeRepository pipelineStepTypeRepository;
+    private final RuntimeVersionRepository runtimeVersionRepository;
 
-    private PipelineStepMapper mapper;
+    private final PipelineStepMapper mapper;
 
     public PipelineStepDto findById(Long id) {
         PipelineStep pipelineStep = pipelineStepRepository.findById(id)

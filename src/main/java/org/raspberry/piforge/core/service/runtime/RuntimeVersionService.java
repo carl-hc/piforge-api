@@ -7,7 +7,6 @@ import org.raspberry.piforge.core.exception.NotFoundException;
 import org.raspberry.piforge.core.mapper.runtime.RuntimeVersionMapper;
 import org.raspberry.piforge.core.repository.runtime.RuntimeRepository;
 import org.raspberry.piforge.core.repository.runtime.RuntimeVersionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,13 +15,10 @@ import java.util.List;
 @AllArgsConstructor
 public class RuntimeVersionService {
 
-    @Autowired
-    private RuntimeRepository runtimeRepository;
-    @Autowired
-    private RuntimeVersionRepository runtimeVersionRepository;
+    private final RuntimeRepository runtimeRepository;
+    private final RuntimeVersionRepository runtimeVersionRepository;
 
-    @Autowired
-    private RuntimeVersionMapper mapper;
+    private final RuntimeVersionMapper mapper;
 
     public RuntimeVersionDto findById(Long id) {
         RuntimeVersion runtimeVersion = runtimeVersionRepository.findById(id)

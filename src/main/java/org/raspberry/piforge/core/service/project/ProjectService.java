@@ -15,10 +15,10 @@ import java.util.List;
 @AllArgsConstructor
 public class ProjectService {
 
-    private ProjectRepository projectRepository;
-    private ProjectTypeRepository projectTypeRepository;
+    private final ProjectRepository projectRepository;
+    private final ProjectTypeRepository projectTypeRepository;
 
-    private ProjectMapper mapper;
+    private final ProjectMapper mapper;
 
     public ProjectDto findById(Long id) {
         Project project = projectRepository.findById(id)

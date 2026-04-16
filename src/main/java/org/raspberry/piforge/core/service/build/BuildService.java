@@ -15,10 +15,10 @@ import java.util.List;
 @AllArgsConstructor
 public class BuildService {
 
-    private BuildRepository buildRepository;
-    private PipelineRepository pipelineRepository;
+    private final BuildRepository buildRepository;
+    private final PipelineRepository pipelineRepository;
 
-    private BuildMapper mapper;
+    private final BuildMapper mapper;
 
     public BuildDto findById(Long id) {
         Build build = buildRepository.findById(id)

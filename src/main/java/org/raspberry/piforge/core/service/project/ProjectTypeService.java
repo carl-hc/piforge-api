@@ -14,9 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 public class ProjectTypeService {
 
-    private ProjectTypeRepository projectTypeRepository;
+    private final ProjectTypeRepository projectTypeRepository;
 
-    private ProjectTypeMapper mapper;
+    private final ProjectTypeMapper mapper;
 
     public ProjectTypeDto findById(Long id) {
         ProjectType projectType = projectTypeRepository.findById(id)

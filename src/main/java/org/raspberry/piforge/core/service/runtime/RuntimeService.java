@@ -14,9 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 public class RuntimeService {
 
-    private RuntimeRepository runtimeRepository;
+    private final RuntimeRepository runtimeRepository;
 
-    private RuntimeMapper mapper;
+    private final RuntimeMapper mapper;
 
     public RuntimeDto findById(Long id) {
         Runtime runtime = runtimeRepository.findById(id)

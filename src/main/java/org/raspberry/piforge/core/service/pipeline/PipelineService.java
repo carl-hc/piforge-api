@@ -15,10 +15,10 @@ import java.util.List;
 @AllArgsConstructor
 public class PipelineService {
 
-    private PipelineRepository pipelineRepository;
-    private ProjectRepository projectRepository;
+    private final PipelineRepository pipelineRepository;
+    private final ProjectRepository projectRepository;
 
-    private PipelineMapper mapper;
+    private final PipelineMapper mapper;
 
     public PipelineDto findById(Long id) {
         Pipeline pipeline = pipelineRepository.findById(id)

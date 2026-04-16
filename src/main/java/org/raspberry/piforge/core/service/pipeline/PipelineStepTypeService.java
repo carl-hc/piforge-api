@@ -14,9 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 public class PipelineStepTypeService {
 
-    private PipelineStepTypeRepository pipelineStepTypeRepository;
+    private final PipelineStepTypeRepository pipelineStepTypeRepository;
     
-    private PipelineStepTypeMapper mapper;
+    private final PipelineStepTypeMapper mapper;
 
     public PipelineStepTypeDto findById(Long id) {
         PipelineStepType pipelineStepType = pipelineStepTypeRepository.findById(id)

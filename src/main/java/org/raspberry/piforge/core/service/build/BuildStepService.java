@@ -16,11 +16,11 @@ import java.util.List;
 @AllArgsConstructor
 public class BuildStepService {
 
-    private BuildRepository buildRepository;
-    private BuildStepRepository buildStepRepository;
-    private PipelineStepRepository pipelineStepRepository;
+    private final BuildRepository buildRepository;
+    private final BuildStepRepository buildStepRepository;
+    private final PipelineStepRepository pipelineStepRepository;
 
-    private BuildStepMapper mapper;
+    private final BuildStepMapper mapper;
 
     public BuildStepDto findById(Long id) {
         BuildStep buildStep = buildStepRepository.findById(id)
