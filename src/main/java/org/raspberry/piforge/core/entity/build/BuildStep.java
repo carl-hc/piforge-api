@@ -26,11 +26,11 @@ public class BuildStep {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "ID_BUILD")
+    @JoinColumn(name = "BUILD_ID")
     private Build build;
 
     @ManyToOne
-    @JoinColumn(name = "ID_PIPELINE_STEP")
+    @JoinColumn(name = "PIPELINE_STEP_ID")
     private PipelineStep pipelineStep;
 
     @Column(name = "STATUS")

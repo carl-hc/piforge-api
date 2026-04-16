@@ -22,15 +22,15 @@ public class PipelineStep {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "ID_PIPELINE")
+    @JoinColumn(name = "PIPELINE_ID")
     private Pipeline pipeline;
 
     @ManyToOne
-    @JoinColumn(name = "ID_PIPELINE_STEP_TYPE")
+    @JoinColumn(name = "PIPELINE_STEP_TYPE_ID")
     private PipelineStepType pipelineStepType;
 
     @ManyToOne
-    @JoinColumn(name = "ID_RUNTIME_VERSION")
+    @JoinColumn(name = "RUNTIME_VERSION_ID")
     private RuntimeVersion runtimeVersion;
 
     @Column(name = "STEP_ORDER")

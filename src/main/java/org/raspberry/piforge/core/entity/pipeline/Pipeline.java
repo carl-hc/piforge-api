@@ -22,7 +22,7 @@ public class Pipeline {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "ID_PROJECT")
+    @JoinColumn(name = "PROJECT_ID")
     private Project project;
 
     @Column(name = "NAME")

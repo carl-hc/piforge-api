@@ -26,7 +26,7 @@ public class Build {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "ID_PIPELINE")
+    @JoinColumn(name = "PIPELINE_ID")
     private Pipeline pipeline;
 
     @Column(name = "STATUS")

@@ -21,7 +21,7 @@ public class RuntimeVersion {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "ID_RUNTIME")
+    @JoinColumn(name = "RUNTIME_ID")
     private Runtime runtime;
 
     @Column(name = "VERSION")

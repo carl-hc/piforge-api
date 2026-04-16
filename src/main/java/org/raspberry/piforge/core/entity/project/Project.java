@@ -21,7 +21,7 @@ public class Project {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "ID_PROJECT_TYPE")
+    @JoinColumn(name = "PROJECT_TYPE_ID")
     private ProjectType projectType;
 
     @Column(name = "NAME")
