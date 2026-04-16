@@ -1,8 +1,8 @@
 package org.raspberry.piforge.core.controller.build;
 
+import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.build.BuildStepDto;
 import org.raspberry.piforge.core.service.build.BuildStepService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +16,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/core/buildStep")
+@AllArgsConstructor
 public class BuildStepController {
 
-    @Autowired
-    private BuildStepService service;
+    private final BuildStepService service;
 
     @GetMapping("/{id}")
     public BuildStepDto findById(@PathVariable("id") Long id) {

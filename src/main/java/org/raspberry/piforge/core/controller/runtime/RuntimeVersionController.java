@@ -1,8 +1,8 @@
 package org.raspberry.piforge.core.controller.runtime;
 
+import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.runtime.RuntimeVersionDto;
 import org.raspberry.piforge.core.service.runtime.RuntimeVersionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +16,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/core/runtimeVersion")
+@AllArgsConstructor
 public class RuntimeVersionController {
 
-    @Autowired
-    private RuntimeVersionService service;
+    private final RuntimeVersionService service;
 
     @GetMapping("/{id}")
     public RuntimeVersionDto findById(@PathVariable("id") Long id) {
