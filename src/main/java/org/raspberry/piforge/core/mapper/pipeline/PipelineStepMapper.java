@@ -10,9 +10,9 @@ import org.raspberry.piforge.core.entity.pipeline.PipelineStep;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface PipelineStepMapper extends GenericMapper<PipelineStep, PipelineStepDto> {
 
-    @Mapping(target = "idPipeline", source = "pipeline.id")
-    @Mapping(target = "idPipelineStepType", source = "pipelineStepType.id")
-    @Mapping(target = "idRuntimeVersion", source = "runtimeVersion.id")
+    @Mapping(target = "pipelineId", source = "pipeline.id")
+    @Mapping(target = "pipelineStepTypeId", source = "pipelineStepType.id")
+    @Mapping(target = "runtimeVersionId", source = "runtimeVersion.id")
     PipelineStepDto toDto(PipelineStep entity);
 
 }

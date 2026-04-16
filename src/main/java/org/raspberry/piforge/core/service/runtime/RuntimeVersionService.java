@@ -1,5 +1,6 @@
 package org.raspberry.piforge.core.service.runtime;
 
+import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.runtime.RuntimeVersionDto;
 import org.raspberry.piforge.core.entity.runtime.RuntimeVersion;
 import org.raspberry.piforge.core.exception.NotFoundException;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class RuntimeVersionService {
 
     @Autowired
@@ -37,7 +39,7 @@ public class RuntimeVersionService {
 
     public RuntimeVersionDto create(RuntimeVersionDto runtimeVersionDto) {
         RuntimeVersion runtimeVersion = new RuntimeVersion();
-        runtimeVersion.setRuntime(runtimeRepository.getReferenceById(runtimeVersionDto.getIdRuntime()));
+        runtimeVersion.setRuntime(runtimeRepository.getReferenceById(runtimeVersionDto.getRuntimeId()));
         runtimeVersion.setVersion(runtimeVersionDto.getVersion());
         runtimeVersion.setPath(runtimeVersionDto.getPath());
 
@@ -50,7 +52,7 @@ public class RuntimeVersionService {
         RuntimeVersion runtimeVersion = runtimeVersionRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("RuntimeVersion with id '%s' not found", id));
 
-        runtimeVersion.setRuntime(runtimeRepository.getReferenceById(runtimeVersionDto.getIdRuntime()));
+        runtimeVersion.setRuntime(runtimeRepository.getReferenceById(runtimeVersionDto.getRuntimeId()));
         runtimeVersion.setVersion(runtimeVersionDto.getVersion());
         runtimeVersion.setPath(runtimeVersionDto.getPath());
 

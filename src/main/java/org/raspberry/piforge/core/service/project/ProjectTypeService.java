@@ -1,22 +1,21 @@
 package org.raspberry.piforge.core.service.project;
 
+import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.project.ProjectTypeDto;
 import org.raspberry.piforge.core.entity.project.ProjectType;
 import org.raspberry.piforge.core.exception.NotFoundException;
 import org.raspberry.piforge.core.mapper.project.ProjectTypeMapper;
 import org.raspberry.piforge.core.repository.project.ProjectTypeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class ProjectTypeService {
 
-    @Autowired
     private ProjectTypeRepository projectTypeRepository;
 
-    @Autowired
     private ProjectTypeMapper mapper;
 
     public ProjectTypeDto findById(Long id) {

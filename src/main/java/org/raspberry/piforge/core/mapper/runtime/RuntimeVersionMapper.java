@@ -10,7 +10,7 @@ import org.raspberry.piforge.core.entity.runtime.RuntimeVersion;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface RuntimeVersionMapper extends GenericMapper<RuntimeVersion, RuntimeVersionDto> {
 
-    @Mapping(target = "idRuntime", source = "runtime.id")
+    @Mapping(target = "runtimeId", source = "runtime.id")
     RuntimeVersionDto toDto(RuntimeVersion entity);
 
 }

@@ -1,25 +1,23 @@
 package org.raspberry.piforge.core.service.build;
 
+import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.build.BuildDto;
 import org.raspberry.piforge.core.entity.build.Build;
 import org.raspberry.piforge.core.exception.NotFoundException;
 import org.raspberry.piforge.core.mapper.build.BuildMapper;
 import org.raspberry.piforge.core.repository.build.BuildRepository;
 import org.raspberry.piforge.core.repository.pipeline.PipelineRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class BuildService {
 
-    @Autowired
     private BuildRepository buildRepository;
-    @Autowired
     private PipelineRepository pipelineRepository;
 
-    @Autowired
     private BuildMapper mapper;
 
     public BuildDto findById(Long id) {
@@ -37,7 +35,7 @@ public class BuildService {
 
     public BuildDto create(BuildDto buildDto) {
         Build build = new Build();
-        build.setPipeline(pipelineRepository.getReferenceById(buildDto.getIdPipeline()));
+        build.setPipeline(pipelineRepository.getReferenceById(buildDto.getPipelineId()));
         build.setStatus(buildDto.getStatus());
         build.setIniProcess(buildDto.getIniProcess());
         build.setEndProcess(buildDto.getEndProcess());
@@ -51,7 +49,7 @@ public class BuildService {
         Build build = buildRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Build with id '%s' not found", id));
 
-        build.setPipeline(pipelineRepository.getReferenceById(buildDto.getIdPipeline()));
+        build.setPipeline(pipelineRepository.getReferenceById(buildDto.getPipelineId()));
         build.setStatus(buildDto.getStatus());
         build.setIniProcess(buildDto.getIniProcess());
         build.setEndProcess(buildDto.getEndProcess());

@@ -10,7 +10,7 @@ import org.raspberry.piforge.core.entity.pipeline.Pipeline;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface PipelineMapper extends GenericMapper<Pipeline, PipelineDto> {
 
-    @Mapping(target = "idProject", source = "project.id")
+    @Mapping(target = "projectId", source = "project.id")
     PipelineDto toDto(Pipeline entity);
 
 }

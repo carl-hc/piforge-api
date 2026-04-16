@@ -1,22 +1,21 @@
 package org.raspberry.piforge.core.service.pipeline;
 
+import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.pipeline.PipelineStepTypeDto;
 import org.raspberry.piforge.core.entity.pipeline.PipelineStepType;
 import org.raspberry.piforge.core.exception.NotFoundException;
 import org.raspberry.piforge.core.mapper.pipeline.PipelineStepTypeMapper;
 import org.raspberry.piforge.core.repository.pipeline.PipelineStepTypeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class PipelineStepTypeService {
 
-    @Autowired
     private PipelineStepTypeRepository pipelineStepTypeRepository;
     
-    @Autowired
     private PipelineStepTypeMapper mapper;
 
     public PipelineStepTypeDto findById(Long id) {

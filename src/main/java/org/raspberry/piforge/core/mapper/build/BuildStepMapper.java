@@ -10,8 +10,8 @@ import org.raspberry.piforge.core.entity.build.BuildStep;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface BuildStepMapper extends GenericMapper<BuildStep, BuildStepDto> {
 
-    @Mapping(target = "idBuild", source = "build.id")
-    @Mapping(target = "idPipelineStep", source = "pipelineStep.id")
+    @Mapping(target = "buildId", source = "build.id")
+    @Mapping(target = "pipelineStepId", source = "pipelineStep.id")
     BuildStepDto toDto(BuildStep entity);
 
 }

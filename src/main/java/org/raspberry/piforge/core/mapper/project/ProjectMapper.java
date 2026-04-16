@@ -10,7 +10,7 @@ import org.raspberry.piforge.core.entity.project.Project;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProjectMapper extends GenericMapper<Project, ProjectDto> {
 
-    @Mapping(target = "idProjectType", source = "projectType.id")
+    @Mapping(target = "projectTypeId", source = "projectType.id")
     ProjectDto toDto(Project entity);
 
 }

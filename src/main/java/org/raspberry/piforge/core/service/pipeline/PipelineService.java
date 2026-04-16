@@ -1,25 +1,23 @@
 package org.raspberry.piforge.core.service.pipeline;
 
+import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.pipeline.PipelineDto;
 import org.raspberry.piforge.core.entity.pipeline.Pipeline;
 import org.raspberry.piforge.core.exception.NotFoundException;
 import org.raspberry.piforge.core.mapper.pipeline.PipelineMapper;
 import org.raspberry.piforge.core.repository.pipeline.PipelineRepository;
 import org.raspberry.piforge.core.repository.project.ProjectRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class PipelineService {
 
-    @Autowired
     private PipelineRepository pipelineRepository;
-    @Autowired
     private ProjectRepository projectRepository;
 
-    @Autowired
     private PipelineMapper mapper;
 
     public PipelineDto findById(Long id) {
@@ -37,7 +35,7 @@ public class PipelineService {
 
     public PipelineDto create(PipelineDto pipelineDto) {
         Pipeline pipeline = new Pipeline();
-        pipeline.setProject(projectRepository.getReferenceById(pipelineDto.getIdProject()));
+        pipeline.setProject(projectRepository.getReferenceById(pipelineDto.getProjectId()));
         pipeline.setName(pipelineDto.getName());
 
         pipeline = pipelineRepository.save(pipeline);
@@ -49,7 +47,7 @@ public class PipelineService {
         Pipeline pipeline = pipelineRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Pipeline with id '%s' not found", id));
 
-        pipeline.setProject(projectRepository.getReferenceById(pipelineDto.getIdProject()));
+        pipeline.setProject(projectRepository.getReferenceById(pipelineDto.getProjectId()));
         pipeline.setName(pipelineDto.getName());
 
         pipeline = pipelineRepository.save(pipeline);

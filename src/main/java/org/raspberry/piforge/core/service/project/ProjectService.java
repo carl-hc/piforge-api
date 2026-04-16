@@ -1,25 +1,23 @@
 package org.raspberry.piforge.core.service.project;
 
+import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.project.ProjectDto;
 import org.raspberry.piforge.core.entity.project.Project;
 import org.raspberry.piforge.core.exception.NotFoundException;
 import org.raspberry.piforge.core.mapper.project.ProjectMapper;
 import org.raspberry.piforge.core.repository.project.ProjectRepository;
 import org.raspberry.piforge.core.repository.project.ProjectTypeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class ProjectService {
 
-    @Autowired
     private ProjectRepository projectRepository;
-    @Autowired
     private ProjectTypeRepository projectTypeRepository;
 
-    @Autowired
     private ProjectMapper mapper;
 
     public ProjectDto findById(Long id) {
@@ -37,7 +35,7 @@ public class ProjectService {
 
     public ProjectDto create(ProjectDto projectDto) {
         Project project = new Project();
-        project.setProjectType(projectTypeRepository.getReferenceById(projectDto.getIdProjectType()));
+        project.setProjectType(projectTypeRepository.getReferenceById(projectDto.getProjectTypeId()));
         project.setName(projectDto.getName());
         project.setRepoUrl(projectDto.getRepoUrl());
         project.setRepoBranch(projectDto.getRepoBranch());
@@ -51,7 +49,7 @@ public class ProjectService {
         Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Project with id '%s' not found", id));
 
-        project.setProjectType(projectTypeRepository.getReferenceById(projectDto.getIdProjectType()));
+        project.setProjectType(projectTypeRepository.getReferenceById(projectDto.getProjectTypeId()));
         project.setName(projectDto.getName());
         project.setRepoUrl(projectDto.getRepoUrl());
         project.setRepoBranch(projectDto.getRepoBranch());
