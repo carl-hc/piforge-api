@@ -35,9 +35,9 @@ public class RuntimeVersionService {
 
     public RuntimeVersionDto create(RuntimeVersionDto runtimeVersionDto) {
         RuntimeVersion runtimeVersion = new RuntimeVersion();
-        runtimeVersion.setRuntime(runtimeRepository.getReferenceById(runtimeVersionDto.getRuntimeId()));
-        runtimeVersion.setVersion(runtimeVersionDto.getVersion());
-        runtimeVersion.setPath(runtimeVersionDto.getPath());
+        runtimeVersion.setRuntime(runtimeRepository.getReferenceById(runtimeVersionDto.runtimeId()));
+        runtimeVersion.setVersion(runtimeVersionDto.version());
+        runtimeVersion.setPath(runtimeVersionDto.path());
 
         runtimeVersion = runtimeVersionRepository.save(runtimeVersion);
 
@@ -48,9 +48,9 @@ public class RuntimeVersionService {
         RuntimeVersion runtimeVersion = runtimeVersionRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("RuntimeVersion with id '%s' not found", id));
 
-        runtimeVersion.setRuntime(runtimeRepository.getReferenceById(runtimeVersionDto.getRuntimeId()));
-        runtimeVersion.setVersion(runtimeVersionDto.getVersion());
-        runtimeVersion.setPath(runtimeVersionDto.getPath());
+        runtimeVersion.setRuntime(runtimeRepository.getReferenceById(runtimeVersionDto.runtimeId()));
+        runtimeVersion.setVersion(runtimeVersionDto.version());
+        runtimeVersion.setPath(runtimeVersionDto.path());
 
         runtimeVersion = runtimeVersionRepository.save(runtimeVersion);
 

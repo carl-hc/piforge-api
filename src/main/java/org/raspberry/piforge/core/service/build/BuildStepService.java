@@ -37,11 +37,11 @@ public class BuildStepService {
 
     public BuildStepDto create(BuildStepDto buildStepDto) {
         BuildStep buildStep = new BuildStep();
-        buildStep.setBuild(buildRepository.getReferenceById(buildStepDto.getBuildId()));
-        buildStep.setPipelineStep(pipelineStepRepository.getReferenceById(buildStepDto.getPipelineStepId()));
-        buildStep.setStatus(buildStepDto.getStatus());
-        buildStep.setIniProcess(buildStepDto.getIniProcess());
-        buildStep.setEndProcess(buildStepDto.getEndProcess());
+        buildStep.setBuild(buildRepository.getReferenceById(buildStepDto.buildId()));
+        buildStep.setPipelineStep(pipelineStepRepository.getReferenceById(buildStepDto.pipelineStepId()));
+        buildStep.setStatus(buildStepDto.status());
+        buildStep.setIniProcess(buildStepDto.iniProcess());
+        buildStep.setEndProcess(buildStepDto.endProcess());
 
         buildStep = buildStepRepository.save(buildStep);
 
@@ -52,11 +52,11 @@ public class BuildStepService {
         BuildStep buildStep = buildStepRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("BuildStep with id '%s' not found", id));
 
-        buildStep.setBuild(buildRepository.getReferenceById(buildStepDto.getBuildId()));
-        buildStep.setPipelineStep(pipelineStepRepository.getReferenceById(buildStepDto.getPipelineStepId()));
-        buildStep.setStatus(buildStepDto.getStatus());
-        buildStep.setIniProcess(buildStepDto.getIniProcess());
-        buildStep.setEndProcess(buildStepDto.getEndProcess());
+        buildStep.setBuild(buildRepository.getReferenceById(buildStepDto.buildId()));
+        buildStep.setPipelineStep(pipelineStepRepository.getReferenceById(buildStepDto.pipelineStepId()));
+        buildStep.setStatus(buildStepDto.status());
+        buildStep.setIniProcess(buildStepDto.iniProcess());
+        buildStep.setEndProcess(buildStepDto.endProcess());
 
         buildStep = buildStepRepository.save(buildStep);
 

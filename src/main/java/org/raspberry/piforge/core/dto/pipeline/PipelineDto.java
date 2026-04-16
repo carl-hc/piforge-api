@@ -1,14 +1,14 @@
 package org.raspberry.piforge.core.dto.pipeline;
 
-import lombok.Data;
+import lombok.Builder;
 
-@Data
-public class PipelineDto {
+@Builder
+public record PipelineDto(
 
-    private Long id;
+        Long id,
 
-    private Long projectId;
+        Long projectId,
 
-    private String name;
+        String name
 
-}
+) { }

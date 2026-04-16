@@ -1,23 +1,23 @@
 package org.raspberry.piforge.core.dto.build;
 
-import lombok.Data;
+import lombok.Builder;
 import org.raspberry.piforge.core.entity.build.BuildStatus;
 
 import java.time.LocalDateTime;
 
-@Data
-public class BuildStepDto {
+@Builder
+public record BuildStepDto(
 
-    private Long id;
+        Long id,
 
-    private Long buildId;
+        Long buildId,
 
-    private Long pipelineStepId;
+        Long pipelineStepId,
 
-    private BuildStatus status;
+        BuildStatus status,
 
-    private LocalDateTime iniProcess;
+        LocalDateTime iniProcess,
 
-    private LocalDateTime endProcess;
+        LocalDateTime endProcess
 
-}
+) { }

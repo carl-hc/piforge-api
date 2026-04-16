@@ -35,8 +35,8 @@ public class PipelineService {
 
     public PipelineDto create(PipelineDto pipelineDto) {
         Pipeline pipeline = new Pipeline();
-        pipeline.setProject(projectRepository.getReferenceById(pipelineDto.getProjectId()));
-        pipeline.setName(pipelineDto.getName());
+        pipeline.setProject(projectRepository.getReferenceById(pipelineDto.projectId()));
+        pipeline.setName(pipelineDto.name());
 
         pipeline = pipelineRepository.save(pipeline);
 
@@ -47,8 +47,8 @@ public class PipelineService {
         Pipeline pipeline = pipelineRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Pipeline with id '%s' not found", id));
 
-        pipeline.setProject(projectRepository.getReferenceById(pipelineDto.getProjectId()));
-        pipeline.setName(pipelineDto.getName());
+        pipeline.setProject(projectRepository.getReferenceById(pipelineDto.projectId()));
+        pipeline.setName(pipelineDto.name());
 
         pipeline = pipelineRepository.save(pipeline);
 

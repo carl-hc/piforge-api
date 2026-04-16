@@ -1,18 +1,18 @@
 package org.raspberry.piforge.core.dto.project;
 
-import lombok.Data;
+import lombok.Builder;
 
-@Data
-public class ProjectDto {
+@Builder
+public record ProjectDto(
 
-    private Long id;
+        Long id,
 
-    private Long projectTypeId;
+        Long projectTypeId,
 
-    private String name;
+        String name,
 
-    private String repoUrl;
+        String repoUrl,
 
-    private String repoBranch;
+        String repoBranch
 
-}
+) { }

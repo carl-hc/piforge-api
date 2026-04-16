@@ -33,7 +33,7 @@ public class PipelineStepTypeService {
 
     public PipelineStepTypeDto create(PipelineStepTypeDto pipelineStepTypeDto) {
         PipelineStepType pipelineStepType = new PipelineStepType();
-        pipelineStepType.setName(pipelineStepTypeDto.getName());
+        pipelineStepType.setName(pipelineStepTypeDto.name());
 
         pipelineStepType = pipelineStepTypeRepository.save(pipelineStepType);
 
@@ -44,7 +44,7 @@ public class PipelineStepTypeService {
         PipelineStepType pipelineStepType = pipelineStepTypeRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("PipelineStepType with id '%s' not found", id));
 
-        pipelineStepType.setName(pipelineStepTypeDto.getName());
+        pipelineStepType.setName(pipelineStepTypeDto.name());
 
         pipelineStepType = pipelineStepTypeRepository.save(pipelineStepType);
 

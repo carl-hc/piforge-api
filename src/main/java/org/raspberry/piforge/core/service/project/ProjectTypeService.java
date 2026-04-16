@@ -33,7 +33,7 @@ public class ProjectTypeService {
 
     public ProjectTypeDto create(ProjectTypeDto projectTypeDto) {
         ProjectType projectType = new ProjectType();
-        projectType.setName(projectTypeDto.getName());
+        projectType.setName(projectTypeDto.name());
 
         projectType = projectTypeRepository.save(projectType);
 
@@ -44,7 +44,7 @@ public class ProjectTypeService {
         ProjectType projectType = projectTypeRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("ProjectType with id '%s' not found", id));
 
-        projectType.setName(projectTypeDto.getName());
+        projectType.setName(projectTypeDto.name());
 
         projectType = projectTypeRepository.save(projectType);
 

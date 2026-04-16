@@ -35,10 +35,10 @@ public class BuildService {
 
     public BuildDto create(BuildDto buildDto) {
         Build build = new Build();
-        build.setPipeline(pipelineRepository.getReferenceById(buildDto.getPipelineId()));
-        build.setStatus(buildDto.getStatus());
-        build.setIniProcess(buildDto.getIniProcess());
-        build.setEndProcess(buildDto.getEndProcess());
+        build.setPipeline(pipelineRepository.getReferenceById(buildDto.pipelineId()));
+        build.setStatus(buildDto.status());
+        build.setIniProcess(buildDto.iniProcess());
+        build.setEndProcess(buildDto.endProcess());
 
         build = buildRepository.save(build);
 
@@ -49,10 +49,10 @@ public class BuildService {
         Build build = buildRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Build with id '%s' not found", id));
 
-        build.setPipeline(pipelineRepository.getReferenceById(buildDto.getPipelineId()));
-        build.setStatus(buildDto.getStatus());
-        build.setIniProcess(buildDto.getIniProcess());
-        build.setEndProcess(buildDto.getEndProcess());
+        build.setPipeline(pipelineRepository.getReferenceById(buildDto.pipelineId()));
+        build.setStatus(buildDto.status());
+        build.setIniProcess(buildDto.iniProcess());
+        build.setEndProcess(buildDto.endProcess());
 
         build = buildRepository.save(build);
 

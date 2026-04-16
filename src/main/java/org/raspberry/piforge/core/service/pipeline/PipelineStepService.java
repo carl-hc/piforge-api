@@ -39,11 +39,11 @@ public class PipelineStepService {
 
     public PipelineStepDto create(PipelineStepDto pipelineStepDto) {
         PipelineStep pipelineStep = new PipelineStep();
-        pipelineStep.setPipeline(pipelineRepository.getReferenceById(pipelineStepDto.getPipelineId()));
-        pipelineStep.setPipelineStepType(pipelineStepTypeRepository.getReferenceById(pipelineStepDto.getPipelineStepTypeId()));
-        pipelineStep.setRuntimeVersion(runtimeVersionRepository.getReferenceById(pipelineStepDto.getRuntimeVersionId()));
-        pipelineStep.setStepOrder(pipelineStepDto.getStepOrder());
-        pipelineStep.setCommand(pipelineStepDto.getCommand());
+        pipelineStep.setPipeline(pipelineRepository.getReferenceById(pipelineStepDto.pipelineId()));
+        pipelineStep.setPipelineStepType(pipelineStepTypeRepository.getReferenceById(pipelineStepDto.pipelineStepTypeId()));
+        pipelineStep.setRuntimeVersion(runtimeVersionRepository.getReferenceById(pipelineStepDto.runtimeVersionId()));
+        pipelineStep.setStepOrder(pipelineStepDto.stepOrder());
+        pipelineStep.setCommand(pipelineStepDto.command());
 
         pipelineStep = pipelineStepRepository.save(pipelineStep);
 
@@ -54,11 +54,11 @@ public class PipelineStepService {
         PipelineStep pipelineStep = pipelineStepRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("PipelineStep with id '%s' not found", id));
 
-        pipelineStep.setPipeline(pipelineRepository.getReferenceById(pipelineStepDto.getPipelineId()));
-        pipelineStep.setPipelineStepType(pipelineStepTypeRepository.getReferenceById(pipelineStepDto.getPipelineStepTypeId()));
-        pipelineStep.setRuntimeVersion(runtimeVersionRepository.getReferenceById(pipelineStepDto.getRuntimeVersionId()));
-        pipelineStep.setStepOrder(pipelineStepDto.getStepOrder());
-        pipelineStep.setCommand(pipelineStepDto.getCommand());
+        pipelineStep.setPipeline(pipelineRepository.getReferenceById(pipelineStepDto.pipelineId()));
+        pipelineStep.setPipelineStepType(pipelineStepTypeRepository.getReferenceById(pipelineStepDto.pipelineStepTypeId()));
+        pipelineStep.setRuntimeVersion(runtimeVersionRepository.getReferenceById(pipelineStepDto.runtimeVersionId()));
+        pipelineStep.setStepOrder(pipelineStepDto.stepOrder());
+        pipelineStep.setCommand(pipelineStepDto.command());
 
         pipelineStep = pipelineStepRepository.save(pipelineStep);
 

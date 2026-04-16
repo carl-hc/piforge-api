@@ -35,10 +35,10 @@ public class ProjectService {
 
     public ProjectDto create(ProjectDto projectDto) {
         Project project = new Project();
-        project.setProjectType(projectTypeRepository.getReferenceById(projectDto.getProjectTypeId()));
-        project.setName(projectDto.getName());
-        project.setRepoUrl(projectDto.getRepoUrl());
-        project.setRepoBranch(projectDto.getRepoBranch());
+        project.setProjectType(projectTypeRepository.getReferenceById(projectDto.projectTypeId()));
+        project.setName(projectDto.name());
+        project.setRepoUrl(projectDto.repoUrl());
+        project.setRepoBranch(projectDto.repoBranch());
 
         project = projectRepository.save(project);
 
@@ -49,10 +49,10 @@ public class ProjectService {
         Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Project with id '%s' not found", id));
 
-        project.setProjectType(projectTypeRepository.getReferenceById(projectDto.getProjectTypeId()));
-        project.setName(projectDto.getName());
-        project.setRepoUrl(projectDto.getRepoUrl());
-        project.setRepoBranch(projectDto.getRepoBranch());
+        project.setProjectType(projectTypeRepository.getReferenceById(projectDto.projectTypeId()));
+        project.setName(projectDto.name());
+        project.setRepoUrl(projectDto.repoUrl());
+        project.setRepoBranch(projectDto.repoBranch());
 
         project = projectRepository.save(project);
 

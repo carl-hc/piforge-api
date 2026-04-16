@@ -33,7 +33,7 @@ public class RuntimeService {
 
     public RuntimeDto create(RuntimeDto runtimeDto) {
         Runtime runtime = new Runtime();
-        runtime.setName(runtimeDto.getName());
+        runtime.setName(runtimeDto.name());
 
         runtime = runtimeRepository.save(runtime);
 
@@ -44,7 +44,7 @@ public class RuntimeService {
         Runtime runtime = runtimeRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Runtime with id '%s' not found", id));
 
-        runtime.setName(runtimeDto.getName());
+        runtime.setName(runtimeDto.name());
 
         runtime = runtimeRepository.save(runtime);
 

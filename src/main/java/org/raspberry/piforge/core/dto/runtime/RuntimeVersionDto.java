@@ -1,16 +1,16 @@
 package org.raspberry.piforge.core.dto.runtime;
 
-import lombok.Data;
+import lombok.Builder;
 
-@Data
-public class RuntimeVersionDto {
+@Builder
+public record RuntimeVersionDto(
 
-    private Long id;
+        Long id,
 
-    private Long runtimeId;
+        Long runtimeId,
 
-    private String version;
+        String version,
 
-    private String path;
+        String path
 
-}
+) { }

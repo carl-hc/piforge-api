@@ -1,20 +1,20 @@
 package org.raspberry.piforge.core.dto.pipeline;
 
-import lombok.Data;
+import lombok.Builder;
 
-@Data
-public class PipelineStepDto {
+@Builder
+public record PipelineStepDto(
 
-    private Long id;
+        Long id,
 
-    private Long pipelineId;
+        Long pipelineId,
 
-    private Long pipelineStepTypeId;
+        Long pipelineStepTypeId,
 
-    private Long runtimeVersionId;
+        Long runtimeVersionId,
 
-    private Long stepOrder;
+        Long stepOrder,
 
-    private String command;
+        String command
 
-}
+) { }
