@@ -37,8 +37,6 @@ public class ProjectService {
         Project project = new Project();
         project.setProjectType(projectTypeRepository.getReferenceById(projectDto.projectTypeId()));
         project.setName(projectDto.name());
-        project.setRepoUrl(projectDto.repoUrl());
-        project.setRepoBranch(projectDto.repoBranch());
 
         project = projectRepository.save(project);
 
@@ -51,8 +49,6 @@ public class ProjectService {
 
         project.setProjectType(projectTypeRepository.getReferenceById(projectDto.projectTypeId()));
         project.setName(projectDto.name());
-        project.setRepoUrl(projectDto.repoUrl());
-        project.setRepoBranch(projectDto.repoBranch());
 
         project = projectRepository.save(project);
 

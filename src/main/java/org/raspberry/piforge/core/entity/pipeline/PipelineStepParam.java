@@ -1,4 +1,4 @@
-package org.raspberry.piforge.core.entity.project;
+package org.raspberry.piforge.core.entity.pipeline;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,8 +12,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "PROJECT")
-public class Project {
+@Table(name = "PIPELINE_STEP_PARAM")
+public class PipelineStepParam {
 
     @Id
     @Column(name = "ID")
@@ -21,10 +21,13 @@ public class Project {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "PROJECT_TYPE_ID")
-    private ProjectType projectType;
+    @JoinColumn(name = "PIPELINE_STEP_ID")
+    private PipelineStep pipelineStep;
 
     @Column(name = "NAME")
     private String name;
+
+    @Column(name = "VALUE")
+    private String value;
 
 }

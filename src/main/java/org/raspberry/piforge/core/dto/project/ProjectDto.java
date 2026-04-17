@@ -9,10 +9,6 @@ public record ProjectDto(
 
         Long projectTypeId,
 
-        String name,
-
-        String repoUrl,
-
-        String repoBranch
+        String name
 
 ) { }
