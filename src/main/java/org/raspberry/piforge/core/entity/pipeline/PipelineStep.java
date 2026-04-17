@@ -33,8 +33,8 @@ public class PipelineStep {
     @JoinColumn(name = "RUNTIME_VERSION_ID")
     private RuntimeVersion runtimeVersion;
 
-    @Column(name = "STEP")
-    private Long step;
+    @Column(name = "STEP_ORDER")
+    private Long order;
 
     @Column(name = "COMMAND")
     private String command;

@@ -27,7 +27,7 @@ public class PipelineStepParam {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "VALUE")
+    @Column(name = "PARAM_VALUE")
     private String value;
 
 }
