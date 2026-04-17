@@ -13,7 +13,7 @@ public record PipelineStepDto(
 
         Long runtimeVersionId,
 
-        Long stepOrder,
+        Long step,
 
         String command
 

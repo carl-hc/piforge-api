@@ -42,7 +42,7 @@ public class PipelineStepService {
         pipelineStep.setPipeline(pipelineRepository.getReferenceById(pipelineStepDto.pipelineId()));
         pipelineStep.setPipelineStepType(pipelineStepTypeRepository.getReferenceById(pipelineStepDto.pipelineStepTypeId()));
         pipelineStep.setRuntimeVersion(runtimeVersionRepository.getReferenceById(pipelineStepDto.runtimeVersionId()));
-        pipelineStep.setStepOrder(pipelineStepDto.stepOrder());
+        pipelineStep.setStep(pipelineStepDto.step());
         pipelineStep.setCommand(pipelineStepDto.command());
 
         pipelineStep = pipelineStepRepository.save(pipelineStep);
@@ -57,7 +57,7 @@ public class PipelineStepService {
         pipelineStep.setPipeline(pipelineRepository.getReferenceById(pipelineStepDto.pipelineId()));
         pipelineStep.setPipelineStepType(pipelineStepTypeRepository.getReferenceById(pipelineStepDto.pipelineStepTypeId()));
         pipelineStep.setRuntimeVersion(runtimeVersionRepository.getReferenceById(pipelineStepDto.runtimeVersionId()));
-        pipelineStep.setStepOrder(pipelineStepDto.stepOrder());
+        pipelineStep.setStep(pipelineStepDto.step());
         pipelineStep.setCommand(pipelineStepDto.command());
 
         pipelineStep = pipelineStepRepository.save(pipelineStep);
