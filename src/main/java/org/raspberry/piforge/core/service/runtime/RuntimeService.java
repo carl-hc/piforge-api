@@ -1,22 +1,23 @@
 package org.raspberry.piforge.core.service.runtime;
 
-import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.runtime.RuntimeDto;
 import org.raspberry.piforge.core.entity.runtime.Runtime;
 import org.raspberry.piforge.core.exception.NotFoundException;
 import org.raspberry.piforge.core.mapper.runtime.RuntimeMapper;
 import org.raspberry.piforge.core.repository.runtime.RuntimeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class RuntimeService {
 
-    private final RuntimeRepository runtimeRepository;
+    @Autowired
+    private RuntimeRepository runtimeRepository;
 
-    private final RuntimeMapper mapper;
+    @Autowired
+    private RuntimeMapper mapper;
 
     public RuntimeDto findById(Long id) {
         Runtime runtime = runtimeRepository.findById(id)

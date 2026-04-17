@@ -1,24 +1,26 @@
 package org.raspberry.piforge.core.service.runtime;
 
-import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.runtime.RuntimeVersionDto;
 import org.raspberry.piforge.core.entity.runtime.RuntimeVersion;
 import org.raspberry.piforge.core.exception.NotFoundException;
 import org.raspberry.piforge.core.mapper.runtime.RuntimeVersionMapper;
 import org.raspberry.piforge.core.repository.runtime.RuntimeRepository;
 import org.raspberry.piforge.core.repository.runtime.RuntimeVersionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class RuntimeVersionService {
 
-    private final RuntimeRepository runtimeRepository;
-    private final RuntimeVersionRepository runtimeVersionRepository;
+    @Autowired
+    private RuntimeRepository runtimeRepository;
+    @Autowired
+    private RuntimeVersionRepository runtimeVersionRepository;
 
-    private final RuntimeVersionMapper mapper;
+    @Autowired
+    private RuntimeVersionMapper mapper;
 
     public RuntimeVersionDto findById(Long id) {
         RuntimeVersion runtimeVersion = runtimeVersionRepository.findById(id)

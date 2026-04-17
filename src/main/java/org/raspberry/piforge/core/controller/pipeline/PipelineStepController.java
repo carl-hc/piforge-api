@@ -1,8 +1,8 @@
 package org.raspberry.piforge.core.controller.pipeline;
 
-import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.pipeline.PipelineStepDto;
 import org.raspberry.piforge.core.service.pipeline.PipelineStepService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +16,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/core/pipelineStep")
-@AllArgsConstructor
 public class PipelineStepController {
 
-    private final PipelineStepService service;
+    @Autowired
+    private PipelineStepService service;
 
     @GetMapping("/{id}")
     public PipelineStepDto findById(@PathVariable("id") Long id) {

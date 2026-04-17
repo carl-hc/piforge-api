@@ -1,24 +1,26 @@
 package org.raspberry.piforge.core.service.project;
 
-import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.project.ProjectDto;
 import org.raspberry.piforge.core.entity.project.Project;
 import org.raspberry.piforge.core.exception.NotFoundException;
 import org.raspberry.piforge.core.mapper.project.ProjectMapper;
 import org.raspberry.piforge.core.repository.project.ProjectRepository;
 import org.raspberry.piforge.core.repository.project.ProjectTypeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class ProjectService {
 
-    private final ProjectRepository projectRepository;
-    private final ProjectTypeRepository projectTypeRepository;
+    @Autowired
+    private ProjectRepository projectRepository;
+    @Autowired
+    private ProjectTypeRepository projectTypeRepository;
 
-    private final ProjectMapper mapper;
+    @Autowired
+    private ProjectMapper mapper;
 
     public ProjectDto findById(Long id) {
         Project project = projectRepository.findById(id)

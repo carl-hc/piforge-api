@@ -1,24 +1,26 @@
 package org.raspberry.piforge.core.service.build;
 
-import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.build.BuildDto;
 import org.raspberry.piforge.core.entity.build.Build;
 import org.raspberry.piforge.core.exception.NotFoundException;
 import org.raspberry.piforge.core.mapper.build.BuildMapper;
 import org.raspberry.piforge.core.repository.build.BuildRepository;
 import org.raspberry.piforge.core.repository.pipeline.PipelineRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class BuildService {
 
-    private final BuildRepository buildRepository;
-    private final PipelineRepository pipelineRepository;
+    @Autowired
+    private BuildRepository buildRepository;
+    @Autowired
+    private PipelineRepository pipelineRepository;
 
-    private final BuildMapper mapper;
+    @Autowired
+    private BuildMapper mapper;
 
     public BuildDto findById(Long id) {
         Build build = buildRepository.findById(id)

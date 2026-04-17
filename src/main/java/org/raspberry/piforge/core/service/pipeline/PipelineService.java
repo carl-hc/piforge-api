@@ -1,24 +1,26 @@
 package org.raspberry.piforge.core.service.pipeline;
 
-import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.pipeline.PipelineDto;
 import org.raspberry.piforge.core.entity.pipeline.Pipeline;
 import org.raspberry.piforge.core.exception.NotFoundException;
 import org.raspberry.piforge.core.mapper.pipeline.PipelineMapper;
 import org.raspberry.piforge.core.repository.pipeline.PipelineRepository;
 import org.raspberry.piforge.core.repository.project.ProjectRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class PipelineService {
 
-    private final PipelineRepository pipelineRepository;
-    private final ProjectRepository projectRepository;
+    @Autowired
+    private PipelineRepository pipelineRepository;
+    @Autowired
+    private ProjectRepository projectRepository;
 
-    private final PipelineMapper mapper;
+    @Autowired
+    private PipelineMapper mapper;
 
     public PipelineDto findById(Long id) {
         Pipeline pipeline = pipelineRepository.findById(id)

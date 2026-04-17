@@ -1,24 +1,26 @@
 package org.raspberry.piforge.core.service.pipeline;
 
-import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.pipeline.PipelineStepParamDto;
 import org.raspberry.piforge.core.entity.pipeline.PipelineStepParam;
 import org.raspberry.piforge.core.exception.NotFoundException;
 import org.raspberry.piforge.core.mapper.pipeline.PipelineStepParamMapper;
 import org.raspberry.piforge.core.repository.pipeline.PipelineStepParamRepository;
 import org.raspberry.piforge.core.repository.pipeline.PipelineStepRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class PipelineStepParamService {
 
-    private final PipelineStepParamRepository pipelineStepParamRepository;
-    private final PipelineStepRepository pipelineStepRepository;
+    @Autowired
+    private PipelineStepParamRepository pipelineStepParamRepository;
+    @Autowired
+    private PipelineStepRepository pipelineStepRepository;
 
-    private final PipelineStepParamMapper mapper;
+    @Autowired
+    private PipelineStepParamMapper mapper;
 
     public PipelineStepParamDto findById(Long id) {
         PipelineStepParam pipelineStepParam = pipelineStepParamRepository.findById(id)

@@ -1,6 +1,5 @@
 package org.raspberry.piforge.core.service.build;
 
-import lombok.AllArgsConstructor;
 import org.raspberry.piforge.core.dto.build.BuildStepDto;
 import org.raspberry.piforge.core.entity.build.BuildStep;
 import org.raspberry.piforge.core.exception.NotFoundException;
@@ -8,19 +7,23 @@ import org.raspberry.piforge.core.mapper.build.BuildStepMapper;
 import org.raspberry.piforge.core.repository.build.BuildRepository;
 import org.raspberry.piforge.core.repository.build.BuildStepRepository;
 import org.raspberry.piforge.core.repository.pipeline.PipelineStepRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class BuildStepService {
 
-    private final BuildRepository buildRepository;
-    private final BuildStepRepository buildStepRepository;
-    private final PipelineStepRepository pipelineStepRepository;
+    @Autowired
+    private BuildRepository buildRepository;
+    @Autowired
+    private BuildStepRepository buildStepRepository;
+    @Autowired
+    private PipelineStepRepository pipelineStepRepository;
 
-    private final BuildStepMapper mapper;
+    @Autowired
+    private BuildStepMapper mapper;
 
     public BuildStepDto findById(Long id) {
         BuildStep buildStep = buildStepRepository.findById(id)
