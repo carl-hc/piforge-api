@@ -27,7 +27,7 @@ public class BuildStepService {
 
     public BuildStepDto findById(Long id) {
         BuildStep buildStep = buildStepRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("BuildStep with id '%s' not found", id));
+                .orElseThrow(() -> new NotFoundException(String.format("BuildStep with id '%s' not found", id)));
 
         return mapper.toDto(buildStep);
     }
@@ -53,7 +53,7 @@ public class BuildStepService {
 
     public BuildStepDto update(Long id, BuildStepDto buildStepDto) {
         BuildStep buildStep = buildStepRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("BuildStep with id '%s' not found", id));
+                .orElseThrow(() -> new NotFoundException(String.format("BuildStep with id '%s' not found", id)));
 
         buildStep.setBuild(buildRepository.getReferenceById(buildStepDto.buildId()));
         buildStep.setPipelineStep(pipelineStepRepository.getReferenceById(buildStepDto.pipelineStepId()));
@@ -68,7 +68,7 @@ public class BuildStepService {
 
     public void delete(Long id) {
         BuildStep buildStep = buildStepRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("BuildStep with id '%s' not found", id));
+                .orElseThrow(() -> new NotFoundException(String.format("BuildStep with id '%s' not found", id)));
 
         buildStepRepository.delete(buildStep);
     }

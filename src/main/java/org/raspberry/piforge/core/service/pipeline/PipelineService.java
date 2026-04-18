@@ -24,7 +24,7 @@ public class PipelineService {
 
     public PipelineDto findById(Long id) {
         Pipeline pipeline = pipelineRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Pipeline with id '%s' not found", id));
+                .orElseThrow(() -> new NotFoundException(String.format("Pipeline with id '%s' not found", id)));
 
         return mapper.toDto(pipeline);
     }
@@ -47,7 +47,7 @@ public class PipelineService {
 
     public PipelineDto update(Long id, PipelineDto pipelineDto) {
         Pipeline pipeline = pipelineRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Pipeline with id '%s' not found", id));
+                .orElseThrow(() -> new NotFoundException(String.format("Pipeline with id '%s' not found", id)));
 
         pipeline.setProject(projectRepository.getReferenceById(pipelineDto.projectId()));
         pipeline.setName(pipelineDto.name());
@@ -59,7 +59,7 @@ public class PipelineService {
 
     public void delete(Long id) {
         Pipeline pipeline = pipelineRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Pipeline with id '%s' not found", id));
+                .orElseThrow(() -> new NotFoundException(String.format("Pipeline with id '%s' not found", id)));
 
         pipelineRepository.delete(pipeline);
     }

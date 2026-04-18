@@ -24,7 +24,7 @@ public class ProjectService {
 
     public ProjectDto findById(Long id) {
         Project project = projectRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Project with id '%s' not found", id));
+                .orElseThrow(() -> new NotFoundException(String.format("Project with id '%s' not found", id)));
 
         return mapper.toDto(project);
     }
@@ -47,7 +47,7 @@ public class ProjectService {
 
     public ProjectDto update(Long id, ProjectDto projectDto) {
         Project project = projectRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Project with id '%s' not found", id));
+                .orElseThrow(() -> new NotFoundException(String.format("Project with id '%s' not found", id)));
 
         project.setProjectType(projectTypeRepository.getReferenceById(projectDto.projectTypeId()));
         project.setName(projectDto.name());
@@ -59,7 +59,7 @@ public class ProjectService {
 
     public void delete(Long id) {
         Project project = projectRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Project with id '%s' not found", id));
+                .orElseThrow(() -> new NotFoundException(String.format("Project with id '%s' not found", id)));
 
         projectRepository.delete(project);
     }
