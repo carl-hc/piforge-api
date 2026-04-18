@@ -17,13 +17,6 @@ public class CommandExecutor {
 
     private final ExecutorService executor = Executors.newCachedThreadPool();
 
-    public int execute(File workspace, List<String> command) {
-        return this.execute(workspace, command,
-                line -> System.out.println("[OUT] " + line),
-                line -> System.err.println("[ERR] " + line)
-        );
-    }
-
     public int execute(File workspace, List<String> command, Consumer<String> outHandler, Consumer<String> errHandler) {
         ProcessBuilder processBuilder = new ProcessBuilder(command);
         processBuilder.directory(workspace);
