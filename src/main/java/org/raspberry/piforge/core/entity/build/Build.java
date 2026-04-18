@@ -9,11 +9,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import org.raspberry.piforge.core.entity.pipeline.Pipeline;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -38,5 +40,8 @@ public class Build {
 
     @Column(name = "END_PROCESS")
     private LocalDateTime endProcess;
+
+    @OneToMany(mappedBy = "build")
+    private List<BuildStep> buildSteps;
 
 }

@@ -7,8 +7,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.raspberry.piforge.core.entity.pipeline.Pipeline;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -26,5 +30,8 @@ public class Project {
 
     @Column(name = "NAME")
     private String name;
+
+    @OneToMany(mappedBy = "project")
+    private List<Pipeline> pipelines;
 
 }

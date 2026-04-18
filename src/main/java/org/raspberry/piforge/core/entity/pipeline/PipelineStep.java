@@ -7,9 +7,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.raspberry.piforge.core.entity.build.BuildStep;
 import org.raspberry.piforge.core.entity.runtime.RuntimeVersion;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -38,5 +42,11 @@ public class PipelineStep {
 
     @Column(name = "COMMAND")
     private String command;
+
+    @OneToMany(mappedBy = "pipelineStep")
+    private List<BuildStep> buildSteps;
+
+    @OneToMany(mappedBy = "pipelineStep")
+    private List<PipelineStepParam> pipelineStepParams;
 
 }

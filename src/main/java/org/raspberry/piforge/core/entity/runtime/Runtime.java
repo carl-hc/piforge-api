@@ -5,8 +5,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -20,5 +23,8 @@ public class Runtime {
 
     @Column(name = "NAME")
     private String name;
+
+    @OneToMany(mappedBy = "runtime")
+    private List<RuntimeVersion> runtimeVersions;
 
 }
