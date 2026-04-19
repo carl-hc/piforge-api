@@ -34,7 +34,7 @@ public class CommandExecutor {
 
             return exitCode;
         } catch (Exception ex) {
-            throw new InternalServerErrorException("Error executing process command", ex);
+            throw new InternalServerErrorException(ex, "Error executing process command");
         }
     }
 
@@ -45,7 +45,7 @@ public class CommandExecutor {
                 handler.accept(line);
             }
         } catch (Exception ex) {
-            throw new InternalServerErrorException("Error streaming process output", ex);
+            throw new InternalServerErrorException(ex, "Error streaming process output");
         }
     }
 

@@ -1,6 +1,6 @@
 package org.raspberry.piforge.engine.resolver;
 
-import org.raspberry.piforge.core.exception.InternalServerErrorException;
+import org.raspberry.piforge.core.exception.BadRequestException;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class CommandResolver {
 
     private String resolveParam(String param, Map<String, String> params) {
         if (!params.containsKey(param)) {
-            throw new InternalServerErrorException(String.format("Error resolving param %s", param));
+            throw new BadRequestException("Param with name '%s' not declared", param);
         }
 
         return params.get(param);
