@@ -30,7 +30,7 @@ public class PipelineStepService {
 
     public PipelineStepDto findById(Long id) {
         PipelineStep pipelineStep = pipelineStepRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("PipelineStep with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("PipelineStep with id '%s' not found", id));
 
         return mapper.toDto(pipelineStep);
     }
@@ -56,7 +56,7 @@ public class PipelineStepService {
 
     public PipelineStepDto update(Long id, PipelineStepDto pipelineStepDto) {
         PipelineStep pipelineStep = pipelineStepRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("PipelineStep with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("PipelineStep with id '%s' not found", id));
 
         pipelineStep.setPipeline(pipelineRepository.getReferenceById(pipelineStepDto.pipelineId()));
         pipelineStep.setPipelineStepType(pipelineStepTypeRepository.getReferenceById(pipelineStepDto.pipelineStepTypeId()));
@@ -71,7 +71,7 @@ public class PipelineStepService {
 
     public void delete(Long id) {
         PipelineStep pipelineStep = pipelineStepRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("PipelineStep with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("PipelineStep with id '%s' not found", id));
 
         pipelineStepRepository.delete(pipelineStep);
     }

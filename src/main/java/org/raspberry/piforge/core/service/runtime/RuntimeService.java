@@ -21,7 +21,7 @@ public class RuntimeService {
 
     public RuntimeDto findById(Long id) {
         Runtime runtime = runtimeRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("Runtime with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("Runtime with id '%s' not found", id));
 
         return mapper.toDto(runtime);
     }
@@ -43,7 +43,7 @@ public class RuntimeService {
 
     public RuntimeDto update(Long id, RuntimeDto runtimeDto) {
         Runtime runtime = runtimeRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("Runtime with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("Runtime with id '%s' not found", id));
 
         runtime.setName(runtimeDto.name());
 
@@ -54,7 +54,7 @@ public class RuntimeService {
 
     public void delete(Long id) {
         Runtime runtime = runtimeRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("Runtime with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("Runtime with id '%s' not found", id));
 
         runtimeRepository.delete(runtime);
     }

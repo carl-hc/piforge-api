@@ -24,7 +24,7 @@ public class BuildService {
 
     public BuildDto findById(Long id) {
         Build build = buildRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("Build with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("Build with id '%s' not found", id));
 
         return mapper.toDto(build);
     }
@@ -49,7 +49,7 @@ public class BuildService {
 
     public BuildDto update(Long id, BuildDto buildDto) {
         Build build = buildRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("Build with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("Build with id '%s' not found", id));
 
         build.setPipeline(pipelineRepository.getReferenceById(buildDto.pipelineId()));
         build.setStatus(buildDto.status());
@@ -63,7 +63,7 @@ public class BuildService {
 
     public void delete(Long id) {
         Build build = buildRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("Build with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("Build with id '%s' not found", id));
 
         buildRepository.delete(build);
     }

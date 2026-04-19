@@ -24,7 +24,7 @@ public class PipelineStepParamService {
 
     public PipelineStepParamDto findById(Long id) {
         PipelineStepParam pipelineStepParam = pipelineStepParamRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("PipelineStepParam with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("PipelineStepParam with id '%s' not found", id));
 
         return mapper.toDto(pipelineStepParam);
     }
@@ -48,7 +48,7 @@ public class PipelineStepParamService {
 
     public PipelineStepParamDto update(Long id, PipelineStepParamDto pipelineStepParamDto) {
         PipelineStepParam pipelineStepParam = pipelineStepParamRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("PipelineStepParam with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("PipelineStepParam with id '%s' not found", id));
 
         pipelineStepParam.setPipelineStep(pipelineStepRepository.getReferenceById(pipelineStepParamDto.pipelineStepId()));
         pipelineStepParam.setName(pipelineStepParamDto.name());
@@ -61,7 +61,7 @@ public class PipelineStepParamService {
 
     public void delete(Long id) {
         PipelineStepParam pipelineStepParam = pipelineStepParamRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("PipelineStepParam with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("PipelineStepParam with id '%s' not found", id));
 
         pipelineStepParamRepository.delete(pipelineStepParam);
     }

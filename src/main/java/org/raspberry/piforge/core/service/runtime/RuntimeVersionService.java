@@ -24,7 +24,7 @@ public class RuntimeVersionService {
 
     public RuntimeVersionDto findById(Long id) {
         RuntimeVersion runtimeVersion = runtimeVersionRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("RuntimeVersion with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("RuntimeVersion with id '%s' not found", id));
 
         return mapper.toDto(runtimeVersion);
     }
@@ -48,7 +48,7 @@ public class RuntimeVersionService {
 
     public RuntimeVersionDto update(Long id, RuntimeVersionDto runtimeVersionDto) {
         RuntimeVersion runtimeVersion = runtimeVersionRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("RuntimeVersion with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("RuntimeVersion with id '%s' not found", id));
 
         runtimeVersion.setRuntime(runtimeRepository.getReferenceById(runtimeVersionDto.runtimeId()));
         runtimeVersion.setVersion(runtimeVersionDto.version());
@@ -61,7 +61,7 @@ public class RuntimeVersionService {
 
     public void delete(Long id) {
         RuntimeVersion runtimeVersion = runtimeVersionRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(String.format("RuntimeVersion with id '%s' not found", id)));
+                .orElseThrow(() -> new NotFoundException("RuntimeVersion with id '%s' not found", id));
 
         runtimeVersionRepository.delete(runtimeVersion);
     }
